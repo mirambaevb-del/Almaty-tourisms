@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Алматы облысының туристік инфрақұрылымын дамыту</title>
+  <meta name="description" content="Алматы облысының туристік инфрақұрылымын дамыту жобасы: мақсат, міндет, статистика, туристік орындар, инфрақұрылым, қауіпсіздік және байланыс." />
+  <style>
+    :root{
+      --bg: #0b1220;           /* Көңілді қара-көк фон */
+      --card: #101a2f;
+      --muted: #7c8aa5;
+      --text: #eef2ff;         /* Ақшыл мәтін */
+      --brand: #6ea8ff;        /* Акцент */
+      --brand-2: #4fd1c5;      /* Екінші акцент */
+      --success: #86efac;
+      --warn: #fbbf24;
+      --danger: #f87171;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-lg: 26px;
+      --ring: 0 0 0 3px rgba(110,168,255,.25);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background: radial-gradient(1200px 600px at 10% -10%, #1a2542 0%, transparent 70%),
+                         radial-gradient(1000px 500px at 110% -10%, #123 0%, transparent 70%),
+                         var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding: 0 20px}
+    /* Navbar */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); background: rgba(11,18,32,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; gap:10px; align-items:center}
+    .logo{width:36px; height:36px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:var(--shadow)}
+    .brand b{letter-spacing:.3px}
+    .menu{display:flex; gap:14px; flex-wrap:wrap}
+    .menu a{padding:8px 12px; border-radius:999px; color:var(--muted)}
+    .menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    /* Hero */
+    .hero{padding:72px 0 36px}
+    .hero h1{font-size: clamp(28px, 4vw, 46px); line-height:1.15; margin:0 0 12px}
+    .hero p{color:var(--muted); margin:0}
+    .hero-cards{display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:16px; margin:28px 0 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; background:rgba(110,168,255,.12); color:#dbe8ff; border:1px solid rgba(110,168,255,.25); border-radius:999px; font-size:13px}
+    .section{padding:56px 0}
+    .section h2{font-size: clamp(22px, 3vw, 34px); margin:0 0 14px}
+    .muted{color:var(--muted)}
+    /* Grid cards */
+    .grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px}
+    .kpi{display:flex; flex-direction:column; gap:6px}
+    .kpi b{font-size:28px}
+    /* Bar chart */
+    .chart{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:16px}
+    .chart svg{width:100%; height:220px; display:block}
+    .legend{display:flex; gap:14px; align-items:center; margin-top:8px; flex-wrap:wrap}
+    .dot{width:12px; height:12px; border-radius:3px}
+    .dot.y2024{background:var(--brand)}
+    .dot.y2025{background:var(--brand-2)}
+    /* Accordion */
+    details{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:14px 16px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer; font-weight:600}
+    details[open]{box-shadow:var(--ring)}
+    /* Feature list */
+    .list{display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:12px}
+    .list .item{display:flex; gap:12px; align-items:flex-start; background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:14px}
+    .icon{width:28px; height:28px; border-radius:8px; display:grid; place-items:center; background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
+    /* Footer */
+    footer{padding:36px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,.06)}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#04111f; font-weight:700; border:none}
+    .btn:focus{outline:none; box-shadow:var(--ring)}
+    .contact form{display:grid; gap:10px}
+    .input{width:100%; padding:12px 14px; background:rgba(255,255,255,.06); color:var(--text); border:1px solid rgba(255,255,255,.14); border-radius:12px}
+    .input::placeholder{color:#9aa7bf}
+  </style>
+</head>
+<body>
+  <!-- Навигация -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <b>Almaty Tourism</b>
+      </div>
+      <div class="menu">
+        <a id="menuHome" href="#home">Басты</a>
+        <a id="menuGoals" href="#goals">Мақсат & Міндет</a>
+        <a id="menuStats" href="#stats">Статистика</a>
+        <a id="menuPlaces" href="#places">Туристік орындар</a>
+        <a id="menuInfra" href="#infra">Инфрақұрылым</a>
+        <a id="menuFuture" href="#future">Болашақ бейне</a>
+        <a id="menuContact" href="#contact">Байланыс</a>
+      </div>
+      <button class="btn" id="langToggle" style="margin-left:8px">RU</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero">
+    <div class="container">
+      <span class="badge" id="badge">Алматы облысының туристік инфрақұрылымын дамыту жобасы</span>
+      <h1 id="heroTitle">Табиғи әлеует → <span style="color:var(--brand)">заманауи туризм</span>. Қауіпсіз, қолжетімді, тартымды аймақ.</h1>
+      <p id="heroSubtitle">Жоба: талдау • жандандыру • болашақ бейне • практикалық маңыз.</p>
+      <div class="hero-cards">
+        <div class="card kpi">
+          <span class="muted">Мақсат</span>
+          <b>Инфрақұрылымды талдау
+          </b><span class="muted">Аймақтарды жандандыру, даму бағытын анықтау.</span>
+        </div>
+        <div class="card kpi">
+          <span class="muted">Нәтиже</span>
+          <b>Туристік тартымдылықты арттыру</b>
+          <span class="muted">Қауіпсіздік, сервис, жол сапасын көтеру.</span>
+        </div>
+        <div class="card kpi">
+          <span class="muted">Құндылық</span>
+          <b>Экономикалық өсім</b>
+          <span class="muted">Инвестиция, жұмыс орны, имидж.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Мақсат & Міндет -->
+  <section id="goals" class="section">
+    <div class="container">
+      <h2 id="goalsTitle">Мақсат пен міндеттер</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Мақсаты</h3>
+          <ul>
+            <li>Туристік инфрақұрылымға терең талдау жасау;</li>
+            <li>Аймақтарды жандандыру жолдарын ұсыну;</li>
+            <li>Туристік нысандардың болашақ даму бейнесін айқындау.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Міндеттері</h3>
+          <ul>
+            <li>Қазіргі жағдайды зерттеу, әлеуетті бағалау;</li>
+            <li>Әлемдік тәжірибелерге сүйеніп, нақты ұсыныстар дайындау;</li>
+            <li>Маркетинг стратегияларын анықтау;</li>
+            <li>Әлеуметтік-экономикалық тиімділігін көрсету.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Өзектілігі</h3>
+          <p>Қазақстан жер көлемі бойынша әлемде 9-орында. Алматы облысы табиғи және мәдени нысандарға бай. Шетелдік туристерді тарту <b>һәм</b> қаржылық ағымды арттыру — жобаның өзегі.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Статистика 2024 vs 2025 (қолмен жаңартылатын) -->
+  <section id="stats" class="section">
+    <div class="container">
+      <h2 id="statsTitle">Статистика: 2024 ↔ 2025</h2>
+      <p class="muted">Төмендегі мәндерді өз деректеріңмен оңай ауыстыра аласың. Диаграмма автоматты жаңарады.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="kpi"><span class="muted">Туристер (облыс)</span><b id="kpi-tourists">1.60 млн → 1-тоқс. 161,5 мың</b><span class="muted">2024 толық жыл • 2025 Q1</span></div>
+        </div>
+        <div class="card">
+          <div class="kpi"><span class="muted">Шетелдік қонақтар</span><b id="kpi-foreign">111,4 мың → —</b><span class="muted">2024 • 2025 толық дерек кейін</span></div>
+        </div>
+        <div class="card">
+          <div class="kpi"><span class="muted">Инвестиция (қала)</span><b id="kpi-invest">110,9 млрд ₸ (2024)</b><span class="muted">Алматы қаласы</span></div>
+        </div>
+      </div>
+
+      <div class="chart" aria-label="2024 және 2025 салыстырмалы баған диаграммасы">
+        <svg viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet" id="barChart">
+          <!-- Осьтер -->
+          <line x1="40" y1="10" x2="40" y2="190" stroke="rgba(255,255,255,.2)"/>
+          <line x1="40" y1="190" x2="580" y2="190" stroke="rgba(255,255,255,.2)"/>
+          <!-- Бағандар JS арқылы салынатын болады -->
+        </svg>
+        <div class="legend">
+          <span class="pill"><span class="dot y2024"></span>2024</span>
+          <span class="pill"><span class="dot y2025"></span>2025</span>
+        </div>
+      </div>
+
+      <details style="margin-top:14px">
+        <summary>Деректерді өзгерту нұсқаулығы</summary>
+        <p class="muted">Төмендегі <code>statsData</code> объектісіндегі сандарды өзіңнің ресми көрсеткіштеріңмен алмастыр. Мысалы, туристер саны (мың адаммен) т.б.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Туристік орындар -->
+  <section id="places" class="section">
+    <div class="container">
+      <h2 id="placesTitle">Туристік орындар</h2>
+      <div class="list">
+        <div class="item"><div class="icon">🏞</div><div><b>Көлсай & Қайыңды</b><div class="muted">Таза табиғат, жаяу бағыттар, эко-туризм.</div></div></div>
+        <div class="item"><div class="icon">🧗</div><div><b>Шарын шатқалы</b><div class="muted">Қайталанбас каньон, қауіпсіздік бекеттерін күшейту қажет.</div></div></div>
+        <div class="item"><div class="icon">🏖</div><div><b>Балқаш көлі</b><div class="muted">Жағажай демалысы, су спорты, кемпинг мүмкіндіктері.</div></div></div>
+        <div class="item"><div class="icon">🏛</div><div><b>Тарихи-мәдени нысандар</b><div class="muted">Музейлер, этно-ауылдар, жергілікті фестивальдер.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Инфрақұрылым және қауіпсіздік -->
+  <section id="infra" class="section">
+    <div class="container">
+      <h2 id="infraTitle">Инфрақұрылым & қауіпсіздік</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Нақты проблемалар</h3>
+          <ul>
+            <li>Био-туалет тапшылығы және күтім сапасы;</li>
+            <li>Қонақүй мен орналастыру орындарының шектеулігі;</li>
+            <li>Құтқару қызметі, байланыс, бейнабақылау жетіспейді;</li>
+            <li>Жол сапасы мен қоғамдық көлік қолжетімділігі төмен;</li>
+            <li>Сервис деңгейі халықаралық стандарттарға сай емес.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Ұсыныстар</h3>
+          <ul>
+            <li>Эко био-туалеттер орнату, тұрақты сервис;</li>
+            <li>Жаңа қонақүй, глэмпинг, этно-ауыл жобалары;</li>
+            <li>Құтқару бекеттері, GPS-трекер жалға беру, интернет;</li>
+            <li>Жолды жөндеу, shuttle және бағытты автобус;</li>
+            <li>Көптілді гидтер, онлайн брондау, сервисті оқыту.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Қысқаша KPI</h3>
+          <ul>
+            <li>⏱ 12 айда: санитарлық нысандарды +30%;</li>
+            <li>🏨 24 айда: төсектік қорды +20%;</li>
+            <li>🛟 Оқиғаға жауап уақытын −40%;</li>
+            <li>⭐ Қызмет сапасы индексін +25%.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Болашақ бейне / Қорытынды -->
+  <section id="future" class="section">
+    <div class="container">
+      <h2 id="futureTitle">Болашақ бейне & Қорытынды</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Болашақ</h3>
+          <p>«Smart Tourism» элементтері, цифрлық навигация, бірыңғай билет, динамикалық қонақүй-кемпинг желісі.</p>
+        </div>
+        <div class="card">
+          <h3>Қорытынды (3–4 сөйлем)</h3>
+          <p>Алматы облысы табиғи, тарихи және мәдени әлеуеті жоғары туристік аймақ. Қазіргі басты проблемалар – инфрақұрылым, қауіпсіздік және сервис. Ұсынылған шараларды іске асыру арқылы аймақтың тартымдылығы артып, экономикаға елеулі үлес қосылады. Мақсат – қауіпсіз, қолжетімді әрі бәсекеге қабілетті туризм экожүйесін құру.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Байланыс -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 id="contactTitle">Байланыс</h2>
+      <div class="grid">
+        <div class="card">
+          <form onsubmit="event.preventDefault(); alert('Хабарламаңыз жіберілді!'); this.reset();">
+            <input class="input placeholder-name" placeholder="Атыңыз" required>
+            <input class="input" type="email" placeholder="Email" required>
+            <textarea class="input" rows="4" placeholder="Хабарлама"></textarea>
+            <button class="btn" type="submit">Жіберу</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Контакт деректері</h3>
+          <p class="muted">Туризмді дамыту бөлімі (үлгі). Байланыс деректерін осында орналастырыңыз.</p>
+          <p class="pill">📧 info@example.kz</p>
+          <p class="pill">☎️ +77074120911</p>
+          <a class="btn" id="smsQuick" href="sms:+77074120911?body=%D0%A1%D3%99%D0%BB%D0%B5%D0%BC%D0%B5%D1%82%D1%81%D1%96%D0%B7%20%D0%B1%D0%B5,%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D1%80%D2%9B%D1%8B%D0%BB%D1%8B%20%D0%B6%D0%B0%D0%B7%D1%8B%D0%BF%20%D0%BE%D1%82%D1%8B%D1%80%D0%BC%D1%8B%D0%BD.">SMS жіберу</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2025 Алматы облысы туризм жобасы — демо сайт. Барлық деректерді ресми статистикамен жаңартыңыз.</div>
+  </footer>
+  <script>
+    // === ТІЛ РЕЖИМІ (KK/RU) ===
+    const i18n = {
+      kk: {
+        menuHome: 'Басты', menuGoals: 'Мақсат & Міндет', menuStats: 'Статистика', menuPlaces: 'Туристік орындар', menuInfra: 'Инфрақұрылым', menuFuture: 'Болашақ бейне', menuContact: 'Байланыс',
+        badge: 'Алматы облысының туристік инфрақұрылымын дамыту жобасы',
+        heroTitle: 'Табиғи әлеует → заманауи туризм. Қауіпсіз, қолжетімді, тартымды аймақ.',
+        heroSubtitle: 'Жоба: талдау • жандандыру • болашақ бейне • практикалық маңыз.',
+        goalsTitle: 'Мақсат пен міндеттер',
+        statsTitle: 'Статистика: 2024 ↔ 2025',
+        placesTitle: 'Туристік орындар',
+        infraTitle: 'Инфрақұрылым & қауіпсіздік',
+        futureTitle: 'Болашақ бейне & Қорытынды',
+        contactTitle: 'Байланыс'
+      },
+      ru: {
+        menuHome: 'Главная', menuGoals: 'Цели и задачи', menuStats: 'Статистика', menuPlaces: 'Туробъекты', menuInfra: 'Инфраструктура', menuFuture: 'Видение будущего', menuContact: 'Контакты',
+        badge: 'Проект развития туристической инфраструктуры Алматинской области',
+        heroTitle: 'Природный потенциал → современный туризм. Безопасный, доступный и привлекательный регион.',
+        heroSubtitle: 'Проект: анализ • оживление • видение будущего • практическая значимость.',
+        goalsTitle: 'Цели и задачи',
+        statsTitle: 'Статистика: 2024 ↔ 2025',
+        placesTitle: 'Туристические места',
+        infraTitle: 'Инфраструктура и безопасность',
+        futureTitle: 'Видение будущего и выводы',
+        contactTitle: 'Контакты'
+      }
+    };
+
+    const applyLang = (lang) => {
+      const dict = i18n[lang];
+      if(!dict) return;
+      Object.entries(dict).forEach(([id, val])=>{
+        const el = document.getElementById(id);
+        if(el) el.textContent = val;
+      });
+      // Placeholder-ларды да ауыстырайық
+      const name = document.querySelector('input.placeholder-name');
+      const email = document.querySelector('input[type=email]');
+      const msg = document.querySelector('textarea');
+      if(lang==='ru'){
+        if(name) name.placeholder='Ваше имя';
+        if(email) email.placeholder='Email';
+        if(msg) msg.placeholder='Сообщение';
+        const btn = document.querySelector('.contact button.btn'); if(btn) btn.textContent = 'Отправить';
+        const smsBtn = document.getElementById('smsQuick'); if(smsBtn) smsBtn.textContent='Отправить SMS';
+      } else {
+        if(name) name.placeholder='Атыңыз';
+        if(email) email.placeholder='Email';
+        if(msg) msg.placeholder='Хабарлама';
+        const btn = document.querySelector('.contact button.btn'); if(btn) btn.textContent = 'Жіберу';
+        const smsBtn = document.getElementById('smsQuick'); if(smsBtn) smsBtn.textContent='SMS жіберу';
+      }
+      // Тілді есіне сақтаймыз
+      localStorage.setItem('lang', lang);
+      // Тетік түймесі мәтінін ауыстыру
+      const toggle = document.getElementById('langToggle');
+      if(toggle) toggle.textContent = lang==='ru' ? 'KK' : 'RU';
+    };
+
+    // Тіл тетігі
+    const saved = localStorage.getItem('lang') || 'kk';
+    document.addEventListener('DOMContentLoaded', ()=> applyLang(saved));
+    document.getElementById('langToggle').addEventListener('click', ()=>{
+      const curr = localStorage.getItem('lang') || 'kk';
+      applyLang(curr==='kk' ? 'ru' : 'kk');
+    });
+
+    // === SMS батырмасы: формадағы мәтінмен алдын-ала толтыру ===
+    const smsBtn = document.getElementById('smsQuick');
+    const form = document.querySelector('.contact form');
+    if(smsBtn && form){
+      smsBtn.addEventListener('click', (e)=>{
+        const inputs = form.querySelectorAll('input, textarea');
+        const name = inputs[0]?.value || '';
+        const email = inputs[1]?.value || '';
+        const text = inputs[2]?.value || '';
+        const body = `Сәлеметсіз бе! Сайт арқылы жазып отырмын.
+Атым: ${name}
+Email: ${email}
+Хабарлама: ${text}`;
+        const url = `sms:+77074120911?body=${encodeURIComponent(body)}`;
+        smsBtn.setAttribute('href', url);
+      });
+    }
+  </script>
+  <script>
+    // Диаграмма деректері (оңай өзгерту үшін): мәндер мың адаммен/нысанмен т.б.
+    const statsData = [
+      { name: 'Туристер (облыс)', y2024: 1600, y2025: 162 },
+      { name: 'Шетелдік туристер', y2024: 111, y2025: 0 },
+      { name: 'Қонақүй/орын қоры', y2024: 60, y2025: 65 },
+      { name: 'Био-туалеттер', y2024: 300, y2025: 360 },
+    ];
+
+    // Қарапайым баған диаграммасы (inline SVG)
+    const svg = document.getElementById('barChart');
+    const chart = (data)=>{
+      const max = Math.max(...data.flatMap(d=>[d.y2024, d.y2025])) || 1;
+      const x0 = 40, y0 = 190, width = 520, barW = 18, gap = 34;
+      const colGap = (width - data.length * (barW*2 + gap) + gap) / data.length; // авто орталау
+      let x = x0 + 14;
+      // Горизонталь тор сызықтары
+      for(let i=1;i<=4;i++){
+        const y = y0 - (i*40);
+        const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+        line.setAttribute('x1', x0); line.setAttribute('x2', x0+width);
+        line.setAttribute('y1', y); line.setAttribute('y2', y);
+        line.setAttribute('stroke','rgba(255,255,255,.08)');
+        svg.appendChild(line);
+      }
+      data.forEach((d,idx)=>{
+        // 2024 bar
+        const h24 = (d.y2024/max)*150;
+        const rect24 = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        rect24.setAttribute('x', x);
+        rect24.setAttribute('y', y0 - h24);
+        rect24.setAttribute('width', barW);
+        rect24.setAttribute('height', h24);
+        rect24.setAttribute('rx', 4);
+        rect24.setAttribute('fill', 'url(#g24)');
+        rect24.setAttribute('opacity','0.95');
+        svg.appendChild(rect24);
+        // 2025 bar
+        const h25 = (d.y2025/max)*150;
+        const rect25 = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        rect25.setAttribute('x', x + barW + 6);
+        rect25.setAttribute('y', y0 - h25);
+        rect25.setAttribute('width', barW);
+        rect25.setAttribute('height', h25);
+        rect25.setAttribute('rx', 4);
+        rect25.setAttribute('fill', 'url(#g25)');
+        rect25.setAttribute('opacity','0.95');
+        svg.appendChild(rect25);
+        // Төменгі атау
+        const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
+        txt.setAttribute('x', x + barW);
+        txt.setAttribute('y', y0 + 16);
+        txt.setAttribute('text-anchor','middle');
+        txt.setAttribute('fill','rgba(255,255,255,.7)');
+        txt.setAttribute('font-size','10');
+        txt.textContent = d.name;
+        svg.appendChild(txt);
+        x += (barW*2 + gap + colGap);
+      });
+    };
+
+    // Градиенттер
+    const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+    const g24 = document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
+    g24.setAttribute('id','g24'); g24.setAttribute('x1','0'); g24.setAttribute('x2','0'); g24.setAttribute('y1','0'); g24.setAttribute('y2','1');
+    const s1 = document.createElementNS('http://www.w3.org/2000/svg','stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color','#6ea8ff');
+    const s2 = document.createElementNS('http://www.w3.org/2000/svg','stop'); s2.setAttribute('offset','100%'); s2.setAttribute('stop-color','#3b82f6');
+    g24.appendChild(s1); g24.appendChild(s2);
+
+    const g25 = document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
+    g25.setAttribute('id','g25'); g25.setAttribute('x1','0'); g25.setAttribute('x2','0'); g25.setAttribute('y1','0'); g25.setAttribute('y2','1');
+    const s3 = document.createElementNS('http://www.w3.org/2000/svg','stop'); s3.setAttribute('offset','0%'); s3.setAttribute('stop-color','#4fd1c5');
+    const s4 = document.createElementNS('http://www.w3.org/2000/svg','stop'); s4.setAttribute('offset','100%'); s4.setAttribute('stop-color','#14b8a6');
+    g25.appendChild(s3); g25.appendChild(s4);
+
+    defs.appendChild(g24); defs.appendChild(g25);
+    document.getElementById('barChart').appendChild(defs);
+
+    chart(statsData);
+  </script>
+</body>
+</html>
